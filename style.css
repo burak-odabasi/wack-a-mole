@@ -55,3 +55,19 @@ h3 {
 p {
   padding-top: 1rem;
 }
+
+.mole {
+  background-image: url(./images/mole.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.miss {
+  background-image: url(./images/dirt.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.hit {
+  background-image: url(./images/bam.svg);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
