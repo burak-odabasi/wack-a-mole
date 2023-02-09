@@ -20,6 +20,7 @@ body {
   border: 10px solid rgba(245, 245, 245, 0.886);
   background-color: rgb(50, 20, 20);
   color: rgba(245, 245, 245, 0.886);
+  cursor: url(./images/hammer.png), auto;
 }
 
 .container ul {

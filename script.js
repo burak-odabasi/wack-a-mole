@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
   //----------------------------------------------------
   let tryHit = function () {
     console.log("trying hit");
-    const tryArray = ["hit", "miss", "hit"];
+    const tryArray = ["hit", "miss", "miss"];
     let thisTry = tryArray[Math.floor(Math.random() * 3)];
     let prevHit = document.querySelector(".hit");
     let prevMiss = document.querySelector(".miss");
@@ -39,6 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
     moleHere.classList.replace("mole", thisTry);
     if (thisTry === "hit") {
       ++score.textContent;
+      let hitSound = new Audio("./sounds/hammer.mp4");
+      hitSound.play();
+    } else {
+      let missSound = new Audio("./sounds/digmiss.mp4");
+      missSound.play();
     }
     molePopUp();
   };
