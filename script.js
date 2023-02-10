@@ -28,8 +28,8 @@ let tryHit = function () {
     main.classList.remove("hammerdown");
   }, 300);
   console.log("trying hit");
-  const tryArray = ["hit", "miss", "miss"];
-  let thisTry = tryArray[Math.floor(Math.random() * 3)];
+  const tryArray = ["hit", "miss"];
+  let thisTry = tryArray[Math.floor(Math.random() * 2)];
   let prevHit = document.querySelector(".hit");
   let prevMiss = document.querySelector(".miss");
   if (prevHit) {
