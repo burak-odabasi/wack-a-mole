@@ -4,6 +4,8 @@ let score = document.querySelector("span");
 let molePopUp = function () {
   let prevSquare;
   let randomNumber = Math.floor(Math.random() * 28) + 1;
+  // console.log(Math.floor(0.99 * 28) + 1);
+  //the code above works because math.random exlcudes 1 but includes 0
   let squareClass = `.cell0` + randomNumber;
   moleHere = document.querySelector(squareClass);
 
@@ -12,7 +14,11 @@ let molePopUp = function () {
   console.log("moleHere:", moleHere);
   // console.log(`squareClass is:${squareClass}`);
   moleHere.classList.add("mole");
+  setTimeout(function () {
+    moleHere.classList.remove("mole");
+  }, 800);
 };
+setInterval(molePopUp, 850);
 molePopUp();
 //----------------------------------------------------
 let tryHit = function () {
@@ -48,9 +54,3 @@ document.addEventListener("click", function (event) {
     tryHit();
   }
 });
-// document.addEventListener("click", function () {
-//   document.body.style.cursor = `url(./images/hammered.png'), auto`;
-//   setTimeout(function () {
-//     document.body.style.cursor = `url('./images/hammer.png'), auto`;
-//   }, 300);
-// });
