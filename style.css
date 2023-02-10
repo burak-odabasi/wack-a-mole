@@ -23,6 +23,10 @@ body {
   cursor: url(./images/hammer.png), auto;
 }
 
+.hammerdown {
+  cursor: url(./images/hammered.png), auto;
+}
+
 .container ul {
   background-color: rgb(83, 36, 36);
   border: 1px solid burlywood;
