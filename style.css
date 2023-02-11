@@ -24,22 +24,27 @@ body {
 }
 .startscreen .title {
   margin-top: 1.8rem;
-  height: 30%;
+  height: 27.5%;
 }
 .startscreen .startButtons {
   height: 17%;
   /* border: 2px solid red; */
   display: grid;
   place-items: center;
+  margin-top: 3.3rem;
 }
 .startscreen .startButtons button {
   background-color: rgb(50, 20, 20);
   color: rgb(210, 165, 105);
+  font-size: 1.75rem;
+  padding: 1rem 2rem;
+  border: 4px solid rgb(115, 52, 52);
 }
 
 .startscreen .difficulty {
   height: 45%;
-  margin-top: 3rem;
+  /* margin-bottom: 4rem;
+  padding-bottom: 10rem; */
 }
 .startscreen .theMoles {
   border: 5px solid rgb(0, 0, 0);
