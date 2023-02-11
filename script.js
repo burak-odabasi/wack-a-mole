@@ -95,4 +95,4 @@ startGame = function () {
 
 let gameMode;
 
-startGame();
+// startGame();

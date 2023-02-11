@@ -22,32 +22,82 @@ body {
   color: rgb(50, 20, 20);
   cursor: url(./images/hammer.png), auto;
 }
-.startscreen .difficulty {
-  border: 2px solid red;
+.startscreen .title {
+  margin-top: 1.8rem;
+  height: 30%;
 }
-.startscreen .theMoles {
-  border: 2px solid rgb(0, 0, 0);
-  display: flex;
-  justify-content: center;
-}
-.startscreen .aMole {
-  border: 2px solid rgb(0, 221, 255);
+.startscreen .startButtons {
+  height: 17%;
+  /* border: 2px solid red; */
   display: grid;
-  padding: 0.5rem;
+  place-items: center;
 }
-.startscreen .easy {
-  background-color: rgba(255, 192, 203, 0.397);
-}
-.startscreen .normal {
-}
-.startscreen .hard {
-}
-.startscreen .insane {
+.startscreen .startButtons button {
+  background-color: rgb(50, 20, 20);
+  color: rgb(210, 165, 105);
 }
 
+.startscreen .difficulty {
+  height: 45%;
+  margin-top: 3rem;
+}
+.startscreen .theMoles {
+  border: 5px solid rgb(0, 0, 0);
+  display: inline-flex;
+  justify-content: center;
+  height: 50%;
+  padding: 0 0 1.5rem;
+  border-radius: 0.5rem;
+}
+.startscreen .aMole {
+  /* border: 2px solid rgb(0, 0, 0); */
+  display: grid;
+  padding: 2.1rem 1rem;
+  /* border-radius: 1rem; */
+  border-right: 3px solid black;
+}
+.startscreen .easy {
+  background-image: url(./images/rainbows2.png);
+  padding-bottom: 8rem;
+}
+.startscreen .normal {
+  background-image: url(./images/normalgrass.png);
+  padding-bottom: 8rem;
+}
+.startscreen .hard {
+  background-image: url(./images/grass.jpg);
+  padding-bottom: 8rem;
+}
+.startscreen .insane {
+  background-image: url(./images/night.jpg);
+  padding-bottom: 8rem;
+}
 .startscreen button {
   cursor: url(./images/hammer.png), auto;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  outline: none;
+  border: 3px solid black;
 }
+.startscreen .easy button {
+  color: pink;
+  background-color: rgb(64, 63, 63);
+}
+.startscreen .normal button {
+  color: burlywood;
+  background-color: rgb(64, 63, 63);
+}
+.startscreen .hard button {
+  color: rgb(78, 196, 0);
+  background-color: rgb(44, 44, 44);
+}
+.startscreen .insane button {
+  color: rgb(183, 0, 0);
+  background-color: black;
+  /* border: 3px solid rgb(183, 0, 0); */
+}
+
 .startscreen button:active {
   cursor: url(./images/hammered.png), auto;
 }
