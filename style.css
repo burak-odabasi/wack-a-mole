@@ -79,6 +79,18 @@ p {
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 700px) {
   * {
-    font-size: 8px;
+    font-size: 7px;
+  }
+  .mole {
+    background-image: url(./images/mole.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+  }
+  .miss {
+    background-image: url(./images/dirt.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
   }
 }
