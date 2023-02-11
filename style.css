@@ -15,7 +15,7 @@ body {
   background-color: rgb(58, 112, 103);
 }
 
-.container {
+.gamestartcontainer {
   padding: 1rem 2rem;
   border: 10px solid rgba(245, 245, 245, 0.886);
   background-color: rgb(50, 20, 20);
@@ -45,33 +45,32 @@ body {
   list-style-type: none;
 }
 
-.cell {
+.container .cell {
   display: grid;
   place-items: center;
   width: 6rem;
   height: 6rem;
-  background-color: hsl(0, 0%, 90%);
 }
 
-h3 {
+.container h3 {
   padding-bottom: 1rem;
 }
 
-p {
+.container p {
   padding-top: 1rem;
 }
 
-.mole {
+.container .mole {
   background-image: url(./images/mole.png);
   background-repeat: no-repeat;
   background-position: center center;
 }
-.miss {
+.container .miss {
   background-image: url(./images/dirt.png);
   background-repeat: no-repeat;
   background-position: center center;
 }
-.hit {
+.container .hit {
   background-image: url(./images/bam.svg);
   background-repeat: no-repeat;
   background-position: center center;

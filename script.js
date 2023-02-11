@@ -1,4 +1,40 @@
 startGame = function () {
+  let main = document.querySelector("main");
+  main.classList.add("gamestartcontainer");
+  main.innerHTML = `     
+  <h3>WACK A MOLE!</h3>
+  <ul class="grid">
+    <li class="cell cell01"></li>
+    <li class="cell cell02"></li>
+    <li class="cell cell03"></li>
+    <li class="cell cell04"></li>
+    <li class="cell cell05"></li>
+    <li class="cell cell06"></li>
+    <li class="cell cell07"></li>
+    <li class="cell cell08"></li>
+    <li class="cell cell09"></li>
+    <li class="cell cell010"></li>
+    <li class="cell cell011"></li>
+    <li class="cell cell012"></li>
+    <li class="cell cell013"></li>
+    <li class="cell cell014"></li>
+    <li class="cell cell015"></li>
+    <li class="cell cell016"></li>
+    <li class="cell cell017"></li>
+    <li class="cell cell018"></li>
+    <li class="cell cell019"></li>
+    <li class="cell cell020"></li>
+    <li class="cell cell021"></li>
+    <li class="cell cell022"></li>
+    <li class="cell cell023"></li>
+    <li class="cell cell024"></li>
+    <li class="cell cell025"></li>
+    <li class="cell cell026"></li>
+    <li class="cell cell027"></li>
+    <li class="cell cell028"></li>
+  </ul>
+  <p>Score:<span>0</span></p>
+  `;
   let moleHere;
   let score = document.querySelector("span");
 
@@ -17,9 +53,9 @@ startGame = function () {
     moleHere.classList.add("mole");
     setTimeout(function () {
       moleHere.classList.remove("mole");
-    }, 250);
+    }, 550);
   };
-  setInterval(molePopUp, 300);
+  setInterval(molePopUp, 600);
   //----------------------------------------------------
   let tryHit = function () {
     main = document.querySelector("main");
@@ -56,4 +92,8 @@ startGame = function () {
   });
 };
 
+let gameMode;
+
 startGame();
+// main.classList.toggle("container");
+// main.classList.toggle("container");
