@@ -1,8 +1,9 @@
+let main;
 startGame = function () {
-  let main = document.querySelector("main");
+  main = document.querySelector("main");
   main.classList.add("gamestartcontainer");
   main.innerHTML = `     
-  <h3>WACK A MOLE!</h3>
+  <h3>Time:20</h3>
   <ul class="grid">
     <li class="cell cell01"></li>
     <li class="cell cell02"></li>
@@ -95,5 +96,3 @@ startGame = function () {
 let gameMode;
 
 startGame();
-// main.classList.toggle("container");
-// main.classList.toggle("container");
