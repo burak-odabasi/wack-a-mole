@@ -42,28 +42,38 @@ const startGame = function () {
     let score = document.querySelector("span");
 
     let molePopUp = function () {
-      let prevSquare;
       let randomNumber = Math.floor(Math.random() * 28) + 1;
+      let squareClass = `.cell0` + randomNumber;
       // console.log(Math.floor(0.99 * 28) + 1);
       //the code above works because math.random exlcudes 1 but includes 0
-      let squareClass = `.cell0` + randomNumber;
       moleHere = document.querySelector(squareClass);
-
-      console.log("prevsquare:", prevSquare);
-      console.log("moleHere:", moleHere);
       moleHere.classList.add("mole");
-      setTimeout(function () {
-        moleHere.classList.remove("mole");
-      }, 550);
+      if (difficultyLevel === "easy") {
+        setTimeout(function () {
+          moleHere.classList.remove("mole");
+        }, 1950);
+      } else if (difficultyLevel === "normal") {
+        setTimeout(function () {
+          moleHere.classList.remove("mole");
+        }, 1450);
+      } else if (difficultyLevel === "hard") {
+        setTimeout(function () {
+          moleHere.classList.remove("mole");
+        }, 700);
+      } else {
+        setTimeout(function () {
+          moleHere.classList.remove("mole");
+        }, 275);
+      }
     };
     if (difficultyLevel === "easy") {
-      setInterval(molePopUp, 600);
+      setInterval(molePopUp, 2000);
     } else if (difficultyLevel === "normal") {
-      setInterval(molePopUp, 600);
+      setInterval(molePopUp, 1500);
     } else if (difficultyLevel === "hard") {
-      setInterval(molePopUp, 600);
+      setInterval(molePopUp, 750);
     } else {
-      setInterval(molePopUp, 600);
+      setInterval(molePopUp, 300);
     }
     //----------------------------------------------------
     let tryHit = function () {
