@@ -50,6 +50,7 @@ const startGame = function () {
     <li class="cell cell026"></li>
     <li class="cell cell027"></li>
     <li class="cell cell028"></li>
+
   </ul>
   <span class="gamebottom">
     <h3>Time:15</h3>
@@ -76,9 +77,12 @@ const startGame = function () {
       ) {
         console.log("molepopping up");
         ++totTargets.textContent;
-        let randomNumber = Math.floor(Math.random() * 28) + 1; //+1 so cell isnt 00
+        let randomNumber = Math.floor(Math.random() * 28) + 1; //+1 so !00
         let squareClass = `.cell0` + randomNumber;
         moleHere = document.querySelector(squareClass);
+        if (moleHere.classList.contains("hit")) {
+          moleHere.classList.remove("hit");
+        }
         moleType = difficultyLevel + "mole";
         moleHere.classList.add(moleType);
         if (difficultyLevel === "easy") {
