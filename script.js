@@ -233,9 +233,14 @@ const mainMenu = function () {
     hardButton,
     insaneButton,
   ];
+  const easyImage = document.querySelector(".aMole.easy");
+  const normalImage = document.querySelector(".aMole.normal");
+  const hardImage = document.querySelector(".aMole.hard");
+  const insaneImage = document.querySelector(".aMole.insane");
+  const difficultyImages = [easyImage, normalImage, hardImage, insaneImage];
 
   const toggleDifficulty = (event) => {
-    const button = event.target;
+    const button = event.currentTarget.querySelector("button");
     difficultyLevel = button.innerText.toLowerCase();
     difficultyButtons.forEach((button) => {
       button.classList.remove(`${button.innerText.toLowerCase()}Select`);
@@ -243,8 +248,8 @@ const mainMenu = function () {
     button.classList.toggle(`${difficultyLevel}Select`);
   };
 
-  difficultyButtons.forEach((button) => {
-    button.addEventListener("click", toggleDifficulty);
+  difficultyImages.forEach((image) => {
+    image.addEventListener("click", toggleDifficulty);
   });
 };
 
