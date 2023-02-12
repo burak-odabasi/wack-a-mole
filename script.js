@@ -80,7 +80,7 @@ const startGame = function () {
         if (difficultyLevel === "easy") {
           setTimeout(function () {
             moleHere.classList.remove(moleType);
-          }, 1500);
+          }, 1400);
         } else if (difficultyLevel === "normal") {
           setTimeout(function () {
             moleHere.classList.remove(moleType);
@@ -92,7 +92,7 @@ const startGame = function () {
         } else {
           setTimeout(function () {
             moleHere.classList.remove(moleType);
-          }, 325);
+          }, 350);
         }
       }
     };
@@ -100,13 +100,13 @@ const startGame = function () {
     // call a new mole every x seconds depending on difficulty
     let moleIntervalId;
     if (difficultyLevel === "easy") {
-      moleIntervalId = setInterval(molePopUp, 1700);
+      moleIntervalId = setInterval(molePopUp, 1500);
     } else if (difficultyLevel === "normal") {
       moleIntervalId = setInterval(molePopUp, 800);
     } else if (difficultyLevel === "hard") {
       moleIntervalId = setInterval(molePopUp, 550);
     } else {
-      moleIntervalId = setInterval(molePopUp, 350);
+      moleIntervalId = setInterval(molePopUp, 400);
     }
     //----------------------------------------------------
     // create a timer and a function to count down
