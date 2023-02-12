@@ -28,7 +28,6 @@ body {
 }
 .startscreen .startButtons {
   height: 17%;
-  /* border: 2px solid red; */
   display: grid;
   place-items: center;
   margin-top: 3.3rem;
@@ -43,11 +42,9 @@ body {
 
 .startscreen .difficulty {
   height: 45%;
-  /* margin-bottom: 4rem;
-  padding-bottom: 10rem; */
 }
 .startscreen .theMoles {
-  border: 5px solid rgb(0, 0, 0);
+  border: 6px solid rgb(0, 0, 0);
   display: inline-flex;
   justify-content: center;
   height: 50%;
@@ -55,10 +52,8 @@ body {
   border-radius: 0.5rem;
 }
 .startscreen .aMole {
-  /* border: 2px solid rgb(0, 0, 0); */
   display: grid;
   padding: 2.1rem 1rem;
-  /* border-radius: 1rem; */
   border-right: 3px solid black;
 }
 .startscreen .easy {
@@ -99,7 +94,7 @@ body {
 }
 .startscreen .insane button {
   color: rgb(183, 0, 0);
-  background-color: black;
+  background-color: rgb(44, 44, 44);
   /* border: 3px solid rgb(183, 0, 0); */
 }
 
@@ -186,4 +181,26 @@ body {
     background-position: center center;
     background-size: contain;
   }
+}
+
+.easySelect {
+  background-color: pink !important;
+  color: rgb(202, 70, 92) !important ;
+  border: 3px solid rgb(202, 70, 92) !important;
+  font-weight: 600;
+}
+.normalSelect {
+  background-color: rgb(188, 150, 99) !important;
+  color: rgb(83, 36, 36) !important;
+  border: 3px solid rgb(83, 36, 36) !important;
+}
+.hardSelect {
+  background-color: rgb(110, 255, 99) !important;
+  color: rgb(52, 129, 0) !important;
+  border: 3px solid rgb(52, 129, 0) !important;
+}
+.insaneSelect {
+  background-color: rgb(80, 0, 0) !important;
+  color: rgb(183, 0, 0) !important;
+  border: 3px solid rgb(183, 0, 0) !important;
 }

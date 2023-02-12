@@ -1,8 +1,10 @@
 let main;
-startGame = function () {
-  main = document.querySelector("main");
-  main.classList.add("gamestartcontainer");
-  main.innerHTML = `     
+let difficultyLevel;
+const startGame = function () {
+  if (difficultyLevel) {
+    main = document.querySelector("main");
+    main.classList.add("gamestartcontainer");
+    main.innerHTML = `     
   <h3>Time:20</h3>
   <ul class="grid">
     <li class="cell cell01"></li>
@@ -36,63 +38,132 @@ startGame = function () {
   </ul>
   <p>Score:<span>0</span></p>
   `;
-  let moleHere;
-  let score = document.querySelector("span");
+    let moleHere;
+    let score = document.querySelector("span");
 
-  let molePopUp = function () {
-    let prevSquare;
-    let randomNumber = Math.floor(Math.random() * 28) + 1;
-    // console.log(Math.floor(0.99 * 28) + 1);
-    //the code above works because math.random exlcudes 1 but includes 0
-    let squareClass = `.cell0` + randomNumber;
-    moleHere = document.querySelector(squareClass);
+    let molePopUp = function () {
+      let prevSquare;
+      let randomNumber = Math.floor(Math.random() * 28) + 1;
+      // console.log(Math.floor(0.99 * 28) + 1);
+      //the code above works because math.random exlcudes 1 but includes 0
+      let squareClass = `.cell0` + randomNumber;
+      moleHere = document.querySelector(squareClass);
 
-    // prevSquare = moleHere;
-    console.log("prevsquare:", prevSquare);
-    console.log("moleHere:", moleHere);
-    // console.log(`squareClass is:${squareClass}`);
-    moleHere.classList.add("mole");
-    setTimeout(function () {
-      moleHere.classList.remove("mole");
-    }, 550);
-  };
-  setInterval(molePopUp, 600);
-  //----------------------------------------------------
-  let tryHit = function () {
-    main = document.querySelector("main");
-    main.classList.add("hammerdown");
-    setTimeout(function () {
-      main.classList.remove("hammerdown");
-    }, 300);
-    console.log("trying hit");
-    // const tryArray = ["hit", "miss"];
-    // let thisTry = tryArray[Math.floor(Math.random() * 2)];
-    let thisTry = "hit";
-    let prevHit = document.querySelector(".hit");
-    let prevMiss = document.querySelector(".miss");
-    if (prevHit) {
-      prevHit.classList.remove("hit");
-    } else if (prevMiss) {
-      prevMiss.classList.remove("miss");
-    }
-    moleHere.classList.replace("mole", "hit");
-    if (thisTry === "hit") {
-      ++score.textContent;
-      let hitSound = new Audio("./sounds/hammer.mp4");
-      hitSound.play();
+      console.log("prevsquare:", prevSquare);
+      console.log("moleHere:", moleHere);
+      moleHere.classList.add("mole");
+      setTimeout(function () {
+        moleHere.classList.remove("mole");
+      }, 550);
+    };
+    if (difficultyLevel === "easy") {
+      setInterval(molePopUp, 600);
+    } else if (difficultyLevel === "normal") {
+      setInterval(molePopUp, 600);
+    } else if (difficultyLevel === "hard") {
+      setInterval(molePopUp, 600);
     } else {
-      let missSound = new Audio("./sounds/digmiss.mp4");
-      missSound.play();
+      setInterval(molePopUp, 600);
     }
+    //----------------------------------------------------
+    let tryHit = function () {
+      main = document.querySelector("main");
+      main.classList.add("hammerdown");
+      setTimeout(function () {
+        main.classList.remove("hammerdown");
+      }, 300);
+      console.log("trying hit");
+      // const tryArray = ["hit", "miss"];
+      // let thisTry = tryArray[Math.floor(Math.random() * 2)];
+      let thisTry = "hit";
+      let prevHit = document.querySelector(".hit");
+      let prevMiss = document.querySelector(".miss");
+      if (prevHit) {
+        prevHit.classList.remove("hit");
+      } else if (prevMiss) {
+        prevMiss.classList.remove("miss");
+      }
+      moleHere.classList.replace("mole", "hit");
+      if (thisTry === "hit") {
+        ++score.textContent;
+        let hitSound = new Audio("./sounds/hammer.mp4");
+        hitSound.play();
+      } else {
+        let missSound = new Audio("./sounds/digmiss.mp4");
+        missSound.play();
+      }
+    };
+
+    document.addEventListener("click", function (event) {
+      if (event.target.classList.contains("mole")) {
+        tryHit();
+      }
+    });
+    let mainDiv = document.querySelector("div");
+    mainDiv.classList.remove("startscreen");
+    mainDiv.innerHTML = ``;
+  }
+};
+
+const mainMenu = function () {
+  let mainDiv = document.querySelector("div");
+  mainDiv.classList.add("startscreen");
+  mainDiv.innerHTML = `
+  <div class="title">
+  <h1>Wack A Mole</h1>
+  <p>Test your clicking acuracy!</p>
+</div>
+<div class="difficulty">
+  <p>Select Difficulty</p>
+  <div class="theMoles">
+    <div class="aMole easy">
+      <img src="./images/homeeasy.png" alt="" style="width: 6rem" />
+      <button id="easyid">Easy</button>
+    </div>
+    <div class="aMole normal">
+      <img src="./images/homenormal.png" alt="" style="width: 6rem" />
+      <button id="normalid">Normal</button>
+    </div>
+    <div class="aMole hard">
+      <img src="./images/homehard.png" alt="" style="width: 6rem" />
+      <button id="hardid">Hard</button>
+    </div>
+    <div class="aMole insane">
+      <img src="./images/homeinsane.png" alt="" style="width: 6rem" />
+      <button id="insaneid">Insane</button>
+    </div>
+  </div>
+  <div class="startButtons">
+    <button>I'm Ready</button>
+  </div>
+</div>
+  `;
+  const startButton = document.querySelector(".startButtons button");
+  startButton.addEventListener("click", startGame);
+
+  const easyButton = document.querySelector("#easyid");
+  const normalButton = document.querySelector("#normalid");
+  const hardButton = document.querySelector("#hardid");
+  const insaneButton = document.querySelector("#insaneid");
+  const difficultyButtons = [
+    easyButton,
+    normalButton,
+    hardButton,
+    insaneButton,
+  ];
+
+  const toggleDifficulty = (event) => {
+    const button = event.target;
+    difficultyLevel = button.innerText.toLowerCase();
+    difficultyButtons.forEach((button) => {
+      button.classList.remove(`${button.innerText.toLowerCase()}Select`);
+    });
+    button.classList.toggle(`${difficultyLevel}Select`);
   };
 
-  document.addEventListener("click", function (event) {
-    if (event.target.classList.contains("mole")) {
-      tryHit();
-    }
+  difficultyButtons.forEach((button) => {
+    button.addEventListener("click", toggleDifficulty);
   });
 };
 
-let gameMode;
-
-// startGame();
+mainMenu();
