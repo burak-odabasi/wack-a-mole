@@ -142,11 +142,11 @@ body {
 }
 
 .container h3 {
-  padding-bottom: 1rem;
+  padding-top: 0.8rem;
 }
 
 .container p {
-  padding-top: 1rem;
+  padding-bottom: 0.6rem;
 }
 
 .container .easymole {
@@ -218,4 +218,9 @@ body {
   background-color: rgb(80, 0, 0) !important;
   color: rgb(183, 0, 0) !important;
   border: 3px solid rgb(183, 0, 0) !important;
+}
+
+.container #scoreDiv {
+  display: flex;
+  justify-content: space-evenly;
 }

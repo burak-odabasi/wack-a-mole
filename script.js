@@ -7,7 +7,21 @@ const startGame = function () {
     main = document.querySelector("main");
     main.classList.add("gamestartcontainer");
     main.innerHTML = `     
-  <h3>Time:20</h3>
+    <p id="scoreDiv">
+
+    <span>
+      <span id="scoreP"
+        >TargetsHit:<span id="accTargets">0</span>/<span id="totTargets"
+          >0</span
+        ></span
+      >
+    </span>
+    <span>
+    AccurateClicks:<span id="accClicks">0</span>/<span id="totClicks"
+      >0</span
+    >
+  </span>
+  </p>
   <ul class="grid">
     <li class="cell cell01"></li>
     <li class="cell cell02"></li>
@@ -38,13 +52,23 @@ const startGame = function () {
     <li class="cell cell027"></li>
     <li class="cell cell028"></li>
   </ul>
-  <p>Score:<span>0</span></p>
+  <h3>Time:15</h3>
   `;
+    let accTargets = document.getElementById("accTargets");
+    let totTargets = document.getElementById("totTargets");
+    let accClicks = document.getElementById("accClicks");
+    let totClicks = document.getElementById("totClicks");
+    accTargets.innerHTML = 0;
+    totTargets.innerHTML = 0;
+    accClicks.innerHTML = 0;
+    totClicks.innerHTML = 0;
+
     let moleHere;
     let score = document.querySelector("span");
     //----------------------------------------------------
     // the function that creates a new mole at a random spot and then removes it after x seconds based on difficulty
     let molePopUp = function () {
+      ++totTargets.textContent;
       let randomNumber = Math.floor(Math.random() * 28) + 1; //+1 so cell isnt 00
       let squareClass = `.cell0` + randomNumber;
       moleHere = document.querySelector(squareClass);
@@ -53,32 +77,51 @@ const startGame = function () {
       if (difficultyLevel === "easy") {
         setTimeout(function () {
           moleHere.classList.remove(moleType);
-        }, 1950);
+        }, 1500);
       } else if (difficultyLevel === "normal") {
         setTimeout(function () {
           moleHere.classList.remove(moleType);
-        }, 1450);
+        }, 750);
       } else if (difficultyLevel === "hard") {
         setTimeout(function () {
           moleHere.classList.remove(moleType);
-        }, 700);
+        }, 500);
       } else {
         setTimeout(function () {
           moleHere.classList.remove(moleType);
-        }, 425);
+        }, 325);
       }
     };
     //----------------------------------------------------
     // call a new mole every x seconds depending on difficulty
+    let moleIntervalId;
     if (difficultyLevel === "easy") {
-      setInterval(molePopUp, 2000);
+      moleIntervalId = setInterval(molePopUp, 1700);
     } else if (difficultyLevel === "normal") {
-      setInterval(molePopUp, 1500);
+      moleIntervalId = setInterval(molePopUp, 800);
     } else if (difficultyLevel === "hard") {
-      setInterval(molePopUp, 750);
+      moleIntervalId = setInterval(molePopUp, 550);
     } else {
-      setInterval(molePopUp, 500);
+      moleIntervalId = setInterval(molePopUp, 350);
     }
+    //----------------------------------------------------
+    // create a timer and a function to count down
+    let timer = 14;
+    let gameClock = main.querySelector("h3");
+
+    const countDown = () => {
+      gameClock.innerText = `Time:${timer}`;
+      timer--;
+      if (timer < 0) {
+        clearInterval(intervalId);
+        clearInterval(moleIntervalId);
+        let main = document.querySelector("main");
+        // main.classList.remove("gamestartcontainer");
+        // main.innerHTML = ``;
+      }
+    };
+    const intervalId = setInterval(countDown, 1000);
+
     //----------------------------------------------------
     // the function called when a mole is clicked
     let tryHit = function () {
@@ -98,7 +141,7 @@ const startGame = function () {
       }
       moleHere.classList.replace(moleType, "hit");
       if (thisTry === "hit") {
-        ++score.textContent;
+        ++accTargets.textContent;
         let hitSound = new Audio("./sounds/hammer.mp4");
         hitSound.play();
       } else {
@@ -108,9 +151,13 @@ const startGame = function () {
     };
     //----------------------------------------------------
     //only fire tryhit function when the target contains a moletype class
-    document.addEventListener("click", function (event) {
+    document.addEventListener("mousedown", function (event) {
       if (event.target.classList.contains(moleType)) {
         tryHit();
+        ++accClicks.innerText;
+        ++totClicks.innerText;
+      } else {
+        ++totClicks.innerText;
       }
     });
     //----------------------------------------------------
