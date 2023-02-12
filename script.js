@@ -1,9 +1,11 @@
 let main;
 let difficultyLevel;
 let moleType;
+let gameActive;
 
 const startGame = function () {
   if (difficultyLevel) {
+    gameActive = true;
     main = document.querySelector("main");
     main.classList.add("gamestartcontainer");
     main.innerHTML = `     
@@ -68,28 +70,30 @@ const startGame = function () {
     //----------------------------------------------------
     // the function that creates a new mole at a random spot and then removes it after x seconds based on difficulty
     let molePopUp = function () {
-      ++totTargets.textContent;
-      let randomNumber = Math.floor(Math.random() * 28) + 1; //+1 so cell isnt 00
-      let squareClass = `.cell0` + randomNumber;
-      moleHere = document.querySelector(squareClass);
-      moleType = difficultyLevel + "mole";
-      moleHere.classList.add(moleType);
-      if (difficultyLevel === "easy") {
-        setTimeout(function () {
-          moleHere.classList.remove(moleType);
-        }, 1500);
-      } else if (difficultyLevel === "normal") {
-        setTimeout(function () {
-          moleHere.classList.remove(moleType);
-        }, 750);
-      } else if (difficultyLevel === "hard") {
-        setTimeout(function () {
-          moleHere.classList.remove(moleType);
-        }, 500);
-      } else {
-        setTimeout(function () {
-          moleHere.classList.remove(moleType);
-        }, 325);
+      if (gameActive === true) {
+        ++totTargets.textContent;
+        let randomNumber = Math.floor(Math.random() * 28) + 1; //+1 so cell isnt 00
+        let squareClass = `.cell0` + randomNumber;
+        moleHere = document.querySelector(squareClass);
+        moleType = difficultyLevel + "mole";
+        moleHere.classList.add(moleType);
+        if (difficultyLevel === "easy") {
+          setTimeout(function () {
+            moleHere.classList.remove(moleType);
+          }, 1500);
+        } else if (difficultyLevel === "normal") {
+          setTimeout(function () {
+            moleHere.classList.remove(moleType);
+          }, 750);
+        } else if (difficultyLevel === "hard") {
+          setTimeout(function () {
+            moleHere.classList.remove(moleType);
+          }, 500);
+        } else {
+          setTimeout(function () {
+            moleHere.classList.remove(moleType);
+          }, 325);
+        }
       }
     };
     //----------------------------------------------------
@@ -115,9 +119,6 @@ const startGame = function () {
       if (timer < 0) {
         clearInterval(intervalId);
         clearInterval(moleIntervalId);
-        let main = document.querySelector("main");
-        // main.classList.remove("gamestartcontainer");
-        // main.innerHTML = ``;
       }
     };
     const intervalId = setInterval(countDown, 1000);
@@ -172,6 +173,17 @@ const startGame = function () {
     mainDiv.classList.remove("startscreen");
     mainDiv.innerHTML = ``;
     //----------------------------------------------------
+    //add functionality to home button
+    let goHome = function () {
+      gameActive = false;
+      let main = document.querySelector("main");
+      main.classList.remove("gamestartcontainer");
+      main.innerHTML = ``;
+      mainMenu();
+    };
+
+    homeBtn = document.querySelector("button.returnmain");
+    homeBtn.addEventListener("click", goHome);
   }
 };
 
