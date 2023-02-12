@@ -1,5 +1,7 @@
 let main;
 let difficultyLevel;
+let moleType;
+
 const startGame = function () {
   if (difficultyLevel) {
     main = document.querySelector("main");
@@ -40,32 +42,34 @@ const startGame = function () {
   `;
     let moleHere;
     let score = document.querySelector("span");
-
+    //----------------------------------------------------
+    // the function that creates a new mole at a random spot and then removes it after x seconds based on difficulty
     let molePopUp = function () {
-      let randomNumber = Math.floor(Math.random() * 28) + 1;
+      let randomNumber = Math.floor(Math.random() * 28) + 1; //+1 so cell isnt 00
       let squareClass = `.cell0` + randomNumber;
-      // console.log(Math.floor(0.99 * 28) + 1);
-      //the code above works because math.random exlcudes 1 but includes 0
       moleHere = document.querySelector(squareClass);
-      moleHere.classList.add("mole");
+      moleType = difficultyLevel + "mole";
+      moleHere.classList.add(moleType);
       if (difficultyLevel === "easy") {
         setTimeout(function () {
-          moleHere.classList.remove("mole");
+          moleHere.classList.remove(moleType);
         }, 1950);
       } else if (difficultyLevel === "normal") {
         setTimeout(function () {
-          moleHere.classList.remove("mole");
+          moleHere.classList.remove(moleType);
         }, 1450);
       } else if (difficultyLevel === "hard") {
         setTimeout(function () {
-          moleHere.classList.remove("mole");
+          moleHere.classList.remove(moleType);
         }, 700);
       } else {
         setTimeout(function () {
-          moleHere.classList.remove("mole");
-        }, 275);
+          moleHere.classList.remove(moleType);
+        }, 425);
       }
     };
+    //----------------------------------------------------
+    // call a new mole every x seconds depending on difficulty
     if (difficultyLevel === "easy") {
       setInterval(molePopUp, 2000);
     } else if (difficultyLevel === "normal") {
@@ -73,9 +77,10 @@ const startGame = function () {
     } else if (difficultyLevel === "hard") {
       setInterval(molePopUp, 750);
     } else {
-      setInterval(molePopUp, 300);
+      setInterval(molePopUp, 500);
     }
     //----------------------------------------------------
+    // the function called when a mole is clicked
     let tryHit = function () {
       main = document.querySelector("main");
       main.classList.add("hammerdown");
@@ -83,8 +88,6 @@ const startGame = function () {
         main.classList.remove("hammerdown");
       }, 300);
       console.log("trying hit");
-      // const tryArray = ["hit", "miss"];
-      // let thisTry = tryArray[Math.floor(Math.random() * 2)];
       let thisTry = "hit";
       let prevHit = document.querySelector(".hit");
       let prevMiss = document.querySelector(".miss");
@@ -93,7 +96,7 @@ const startGame = function () {
       } else if (prevMiss) {
         prevMiss.classList.remove("miss");
       }
-      moleHere.classList.replace("mole", "hit");
+      moleHere.classList.replace(moleType, "hit");
       if (thisTry === "hit") {
         ++score.textContent;
         let hitSound = new Audio("./sounds/hammer.mp4");
@@ -103,15 +106,19 @@ const startGame = function () {
         missSound.play();
       }
     };
-
+    //----------------------------------------------------
+    //only fire tryhit function when the target contains a moletype class
     document.addEventListener("click", function (event) {
-      if (event.target.classList.contains("mole")) {
+      if (event.target.classList.contains(moleType)) {
         tryHit();
       }
     });
+    //----------------------------------------------------
+    //Remove the main menu when the game starts.
     let mainDiv = document.querySelector("div");
     mainDiv.classList.remove("startscreen");
     mainDiv.innerHTML = ``;
+    //----------------------------------------------------
   }
 };
 

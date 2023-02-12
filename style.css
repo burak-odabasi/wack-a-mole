@@ -149,8 +149,23 @@ body {
   padding-top: 1rem;
 }
 
-.container .mole {
+.container .easymole {
+  background-image: url(./images/gameeasy.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.container .normalmole {
   background-image: url(./images/mole.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.container .hardmole {
+  background-image: url(./images/gamehard.png);
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.container .insanemole {
+  background-image: url(./images/gameinsane.png);
   background-repeat: no-repeat;
   background-position: center center;
 }
