@@ -141,10 +141,6 @@ body {
   height: 6rem;
 }
 
-.container h3 {
-  padding-top: 0.8rem;
-}
-
 .container p {
   padding-bottom: 0.6rem;
 }
@@ -223,4 +219,31 @@ body {
 .container #scoreDiv {
   display: flex;
   justify-content: space-evenly;
+}
+
+.returnmain {
+  background-color: rgb(83, 36, 36);
+  border: 0;
+  outline: 0px solid black;
+  padding: 0;
+  border-radius: 50%;
+}
+
+.container .gamebottom {
+  /* border: 3px solid red; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4.5rem;
+  padding-top: 1rem;
+  margin-bottom: -0.5rem;
+}
+
+.container .gamebottom h3 {
+  justify-content: space-around;
+  /* border: 2px solid green; */
+  width: 100%;
+  position: relative;
+  left: 1rem;
+  bottom: 3px;
 }

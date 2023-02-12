@@ -8,18 +8,15 @@ const startGame = function () {
     main.classList.add("gamestartcontainer");
     main.innerHTML = `     
     <p id="scoreDiv">
-
     <span>
       <span id="scoreP"
         >TargetsHit:<span id="accTargets">0</span>/<span id="totTargets"
           >0</span
-        ></span
-      >
+        ></span>
     </span>
     <span>
     AccurateClicks:<span id="accClicks">0</span>/<span id="totClicks"
-      >0</span
-    >
+      >0</span>
   </span>
   </p>
   <ul class="grid">
@@ -52,7 +49,12 @@ const startGame = function () {
     <li class="cell cell027"></li>
     <li class="cell cell028"></li>
   </ul>
-  <h3>Time:15</h3>
+  <span class="gamebottom">
+    <h3>Time:15</h3>
+    <button class="returnmain">
+    <img src="./images/homebutton.png" alt="" style="width: 3.4rem" />
+  </button>
+  </span>
   `;
     let accTargets = document.getElementById("accTargets");
     let totTargets = document.getElementById("totTargets");
@@ -62,9 +64,7 @@ const startGame = function () {
     totTargets.innerHTML = 0;
     accClicks.innerHTML = 0;
     totClicks.innerHTML = 0;
-
     let moleHere;
-    let score = document.querySelector("span");
     //----------------------------------------------------
     // the function that creates a new mole at a random spot and then removes it after x seconds based on difficulty
     let molePopUp = function () {
@@ -151,7 +151,8 @@ const startGame = function () {
     };
     //----------------------------------------------------
     //only fire tryhit function when the target contains a moletype class
-    document.addEventListener("mousedown", function (event) {
+
+    let clickTracklistener = function (event) {
       if (event.target.classList.contains(moleType)) {
         tryHit();
         ++accClicks.innerText;
@@ -159,7 +160,12 @@ const startGame = function () {
       } else {
         ++totClicks.innerText;
       }
-    });
+    };
+    document.addEventListener("mousedown", clickTracklistener);
+
+    setInterval(() => {
+      document.removeEventListener("mousedown", clickTracklistener);
+    }, 15000);
     //----------------------------------------------------
     //Remove the main menu when the game starts.
     let mainDiv = document.querySelector("div");
