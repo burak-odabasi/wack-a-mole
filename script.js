@@ -70,7 +70,11 @@ const startGame = function () {
     //----------------------------------------------------
     // the function that creates a new mole at a random spot and then removes it after x seconds based on difficulty
     let molePopUp = function () {
-      if (gameActive === true) {
+      if (
+        gameActive === true &&
+        document.getElementsByClassName(moleType).length <= 0
+      ) {
+        console.log("molepopping up");
         ++totTargets.textContent;
         let randomNumber = Math.floor(Math.random() * 28) + 1; //+1 so cell isnt 00
         let squareClass = `.cell0` + randomNumber;
@@ -99,15 +103,19 @@ const startGame = function () {
     //----------------------------------------------------
     // call a new mole every x seconds depending on difficulty
     let moleIntervalId;
-    if (difficultyLevel === "easy") {
-      moleIntervalId = setInterval(molePopUp, 1500);
-    } else if (difficultyLevel === "normal") {
-      moleIntervalId = setInterval(molePopUp, 800);
-    } else if (difficultyLevel === "hard") {
-      moleIntervalId = setInterval(molePopUp, 550);
-    } else {
-      moleIntervalId = setInterval(molePopUp, 400);
-    }
+
+    startmoleInterval = function () {
+      if (difficultyLevel === "easy") {
+        moleIntervalId = setInterval(molePopUp, 1500);
+      } else if (difficultyLevel === "normal") {
+        moleIntervalId = setInterval(molePopUp, 800);
+      } else if (difficultyLevel === "hard") {
+        moleIntervalId = setInterval(molePopUp, 550);
+      } else {
+        moleIntervalId = setInterval(molePopUp, 400);
+      }
+    };
+    startmoleInterval();
     //----------------------------------------------------
     // create a timer and a function to count down
     let timer = 14;
