@@ -188,6 +188,7 @@ const startGame = function () {
     //add functionality to home button
     let goHome = function () {
       gameActive = false;
+      difficultyLevel = false;
       let main = document.querySelector("main");
       main.classList.remove("gamestartcontainer");
       main.innerHTML = ``;
