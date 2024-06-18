@@ -1,1 +1,1 @@
-play at https://augustcode99.github.io/wack-a-mole/
+play at https://burak-odabasi.github.io/wack-a-mole/
